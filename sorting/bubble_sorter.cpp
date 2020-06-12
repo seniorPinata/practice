@@ -1,23 +1,23 @@
-using namespace std;
-
 #include "bubble_sorter.h"
 
 #include <iostream>
 
-BubbleSorter::BubbleSorter() : Sorter( "Bubble" )
+BubbleSorter::BubbleSorter() : Sorter( "BubbleSort" )
 {
-	cout << "BubbleSorter constructor\n";
+	std::cout << "BubbleSorter constructor\n";
 }
 
 BubbleSorter::~BubbleSorter( void )
 {
-	cout << "BubbleSorter destructor\n";
+	std::cout << "BubbleSorter destructor\n";
 }
 
 /**
  * @brief Sorts array of ints using bubble sort.
  *
  * Swap adjacent elements if out of order
+ *
+ * @note Only need "override" in the header
  *
  * @param[in]     array_len	Length of the array to sort
  * @param[in,out] array 	Array to sort, will be directly modified
@@ -29,7 +29,7 @@ bool BubbleSorter::sort( int array_len, int* array )
 
 	if (!array || 0 == array_len)
 	{
-		cout << "Array is empty nothing to sort\n";
+		std::cout << "Array is empty nothing to sort\n";
 	}
 	else if (1 == array_len)
 	{
@@ -52,7 +52,7 @@ bool BubbleSorter::sort( int array_len, int* array )
 				/* Swap if out of order */
 				if (array[i-1] > array[i])
 				{
-					cout << "Swapping " << array[i-1] << " with " << array[i] << "\n";
+					std::cout << "Swapping " << array[i-1] << " with " << array[i] << "\n";
 					tmp = array[i-1];
 					array[i-1] = array[i];
 					array[i] = tmp;
