@@ -1,18 +1,17 @@
-CXX=g++
-CXXFLAGS=-g
-LDLIBS=
+CXX 		= g++
+CXXFLAGS	= -g -Wall
+LDFLAGS 	=
+OBJS 		= main.o sorter.o bubble_sorter.o
+TARGET 		= sort_app
+DEPS 		=
 
-sort_app: main.o sorter.o bubble_sorter.o
-	$(CXX) $(CXXFLAGS) main.o sorter.o bubble_sorter.o -o sort_app $(LDLIBS)
-
-main.o: main.cpp
-	$(CXX) $(CXXFLAGS) -c main.cpp
-
-sorter.o: sorter.cpp
-	$(CXX) $(CXXFLAGS) -c sorter.cpp
-
-bubble_sorter.o: bubble_sorter.cpp
-	$(CXX) $(CXXFLAGS) -c bubble_sorter.cpp
+# $@ -> target name
+# $< -> first dependency
+# $^ -> all dependencies space separated
+# Smart enough to determine which C files are needed based on
+# 	the dependencies ( $(OBJS) in this case )
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 clean:
-	rm sort_app main.o sorter.o bubble_sorter.o
+	rm $(OBJS) $(TARGET)
