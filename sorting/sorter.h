@@ -1,6 +1,7 @@
 #ifndef SORTER_H
 #define SORTER_H
 
+#include "loggable.h"
 #include <string>
 
 /*
@@ -10,7 +11,7 @@
  * Virtual and Override are override specifiers.
  * They dictate whether subclasses can override methods.
  */
-class Sorter
+class Sorter : public Loggable
 {
 private:
 	std::string m_alg_name;

@@ -1,15 +1,13 @@
 #include "bubble_sorter.h"
 
-#include <iostream>
-
 BubbleSorter::BubbleSorter() : Sorter( "BubbleSort" )
 {
-	std::cout << "BubbleSorter constructor\n";
+	debug_log( "BubbleSorter constructor\n" );
 }
 
 BubbleSorter::~BubbleSorter( void )
 {
-	std::cout << "BubbleSorter destructor\n";
+	debug_log( "BubbleSorter destructor\n" );
 }
 
 /**
@@ -29,7 +27,7 @@ bool BubbleSorter::sort( int array_len, int* array )
 
 	if (!array || 0 == array_len)
 	{
-		std::cout << "Array is empty nothing to sort\n";
+		debug_log( "Array is empty nothing to sort\n" );
 	}
 	else if (1 == array_len)
 	{
@@ -52,7 +50,7 @@ bool BubbleSorter::sort( int array_len, int* array )
 				/* Swap if out of order */
 				if (array[i-1] > array[i])
 				{
-					std::cout << "Swapping " << array[i-1] << " with " << array[i] << "\n";
+					debug_log( "Swapping %d with %d\n", array[i-1], array[i] );
 					tmp = array[i-1];
 					array[i-1] = array[i];
 					array[i] = tmp;

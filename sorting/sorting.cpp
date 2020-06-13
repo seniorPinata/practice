@@ -30,7 +30,7 @@ int main( int argc, char* argv[] )
 	sort_unit_tests( bubble_sort );
 	printf("Bubble sort tests passed\n");
 	sort_unit_tests( selection_sort );
-	printf("selection sort tests passed\n");
+	printf("Selection sort tests passed\n");
 }
 
 /**

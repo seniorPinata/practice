@@ -1,6 +1,4 @@
 #include "sorter.h"
-
-#include <iostream>
 #include <string.h>
 #include <assert.h>
 
@@ -8,15 +6,16 @@
  *
  * @param[in] alg_name Used to set m_alg_name
  */
-Sorter::Sorter( std::string alg_name ) : m_alg_name( alg_name )
+Sorter::Sorter( std::string alg_name ) :
+	Loggable( LOG_LEVEL_INFO ), m_alg_name( alg_name )
 {
-	std::cout << "Template class: created " << m_alg_name << " sorter\n";
+	debug_log( "Template class: created %s\n", m_alg_name.c_str() );
 }
 
 /** @brief Sorter destructor */
 Sorter::~Sorter( void )
 {
-	std::cout << "Template class: deleted " << m_alg_name << " sorter\n";
+	debug_log( "Template class: deleted %s\n", m_alg_name.c_str() );
 }
 
 /** @brief Returns the Sorter name 
@@ -41,13 +40,13 @@ std::string Sorter::getName( void )
  */
 bool Sorter::sort( int array_len, int* array )
 {
-	std::cout << "Template class: implement me in subclasses\n";
+	info_log( "Template class: implement me in subclasses\n" );
 	return false;
 }
 
 void Sorter::unittest( void )
 {
-	std::cout << "Unittesting " << m_alg_name << "...\n";
+	info_log( "Unittesting %s...\n", m_alg_name.c_str() );
 
 	/* Bad len check */
 	int len = 0;
@@ -85,5 +84,5 @@ void Sorter::unittest( void )
 	assert( true == sort(len, arr_reps) );
 	assert( 0 == memcmp( arr_reps, arr_reps_expected, len ) );
 
-	std::cout << "Tests passed.\n";
+	info_log( "Tests passed.\n" );
 }
