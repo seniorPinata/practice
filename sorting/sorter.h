@@ -13,6 +13,8 @@
  */
 class Sorter : public Loggable
 {
+protected:
+	bool shift_right( int array_len, int* array, int start_idx, int end_idx );
 private:
 	std::string m_alg_name;
 public:

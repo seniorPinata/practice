@@ -5,12 +5,10 @@
 
 class SelectionSorter : public Sorter
 {
-private:
-	bool shift_right( int array_len, int* array, int start_idx, int end_idx );
 public:
 	SelectionSorter();
 	~SelectionSorter( void );
 	bool sort( int array_len, int* array ) override;
 };
 
-#endif /* BUBBLE_SORTER_H */
+#endif /* SELECTION_SORTER_H */

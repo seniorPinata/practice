@@ -86,3 +86,53 @@ void Sorter::unittest( void )
 
 	info_log( "Tests passed.\n" );
 }
+
+/**
+ * @brief Shifts an array to the right.
+ *
+ * @param[in]     array_len	Length of the array
+ * @param[in,out] array 	Array to shift, will be directly modified
+ * @param[in]     start_idx	Index of the first element to shift
+ * @param[in]     end_idx	Index of the last element we are going to overwrite
+ *                          Caller is repsonsible for saving this value off
+ * @return True on success, False otherwise.
+ */
+bool Sorter::shift_right( int array_len, int* array, int start_idx, int end_idx )
+{
+	bool success = false;
+
+	if (start_idx >= array_len)
+	{
+		debug_log( "Starting index %d is larger than array length %d\n",
+				   start_idx, array_len );
+	}
+	else if (end_idx >= array_len)
+	{
+		debug_log( "Ending index %d is larger than array length %d\n",
+				   end_idx, array_len );
+	}
+	else if (start_idx > end_idx)
+	{
+		debug_log( "Starting index %d is larger than Ending index %d\n",
+				   start_idx, end_idx );
+	}
+	else if (start_idx == end_idx)
+	{
+		debug_log( "Single element, nothing to do\n" );
+		success = true;
+	}
+	/* Guaranteed to have 2 spots */
+	else
+	{
+		for (int i = end_idx; i > start_idx; --i)
+		{
+			debug_log( "Moving spot %d[%d] into spot %d[%d]\n",
+						   i-1, array[i-1], i, array[i] );
+			array[i] = array[i-1];
+		}
+
+		success = true;
+	}
+
+	return success;
+}
