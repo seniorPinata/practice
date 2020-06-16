@@ -2,7 +2,7 @@ CXX 		= g++
 CXXFLAGS	= -g -Wall
 LDFLAGS 	=
 OBJS 		= main.o loggable.o sorter.o \
-			  bubble_sorter.o selection_sorter.o insertion_sorter.o
+			  bubble_sorter.o selection_sorter.o insertion_sorter.o merge_sorter.o
 TARGET 		= sort_app
 DEPS 		=
 

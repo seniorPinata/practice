@@ -84,6 +84,13 @@ void Sorter::unittest( void )
 	assert( true == sort(len, arr_reps) );
 	assert( 0 == memcmp( arr_reps, arr_reps_expected, len ) );
 
+	/* Already sorted */
+	len = 11;
+	int arr_sorted[] = { 1, 2, 3, 4, 6, 6, 7, 8, 10, 11, 11 };
+	int arr_sorted_expected[] = { 1, 2, 3, 4, 6, 6, 7, 8, 10, 11, 11 };
+	assert( true == sort(len, arr_sorted) );
+	assert( 0 == memcmp( arr_sorted, arr_sorted_expected, len ) );
+
 	info_log( "Tests passed.\n" );
 }
 
@@ -135,4 +142,21 @@ bool Sorter::shift_right( int array_len, int* array, int start_idx, int end_idx 
 	}
 
 	return success;
+}
+
+/**
+ * @brief Log array contents.
+ *
+ * @param[in]     array_len	Length of the array
+ * @param[in,out] array 	Array to log
+ */
+void Sorter::print_array( int array_len, int* array )
+{
+	debug_log( "######################################\n" );
+	debug_log( "Printing array...\n" );
+	for (int i = 0; i < array_len; ++i)
+	{
+		debug_log( "Index:%d, Value:%d\n", i, array[i] );
+	}
+	debug_log( "######################################\n" );
 }
