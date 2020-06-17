@@ -63,19 +63,19 @@ void Sorter::unittest( void )
 	assert( true == sort(len, arr) );
 	assert( 0 == memcmp( arr, expected, len ) );
 
-	/* Odd elements greater than 1 */
-	len = 11;
-	int arr_odd[] = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-	int arr_odd_expected[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-	assert( true == sort(len, arr_odd) );
-	assert( 0 == memcmp( arr_odd, arr_odd_expected, len ) );
-
 	/* Even elements greater than 1 */
 	len = 12;
 	int arr_even[] = { -12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 	int arr_even_expected[] = { -12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 	assert( true == sort(len, arr_even) );
 	assert( 0 == memcmp( arr_even, arr_even_expected, len ) );
+	
+	/* Odd elements greater than 1 */
+	len = 11;
+	int arr_odd[] = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+	int arr_odd_expected[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+	assert( true == sort(len, arr_odd) );
+	assert( 0 == memcmp( arr_odd, arr_odd_expected, len ) );
 
 	/* Repititions */
 	len = 11;
@@ -139,6 +139,36 @@ bool Sorter::shift_right( int array_len, int* array, int start_idx, int end_idx 
 		}
 
 		success = true;
+	}
+
+	return success;
+}
+
+/**
+ * @brief Swap the 2 values.
+ *
+ * @param[in,out] val1		Pointer to first value
+ *                          Will hold second value on success
+ * @param[in,out] val2		Pointer to second value
+ *                          Will hold first value on success
+ * @return True on success, False otherwise.
+ */
+bool Sorter::swap_values( int* val1, int* val2 )
+{
+	bool success = false;
+	int tmp;
+
+	if (val1 && val2)
+	{
+		debug_log( "Swapping %d with %d\n", *val1, *val2 );
+		tmp = *val1;
+		*val1 = *val2;
+		*val2 = tmp;
+		success = true;
+	}
+	else
+	{
+		error_log( "Attempted to swap NULL elements\n" );
 	}
 
 	return success;

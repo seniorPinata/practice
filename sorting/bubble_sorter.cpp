@@ -23,11 +23,12 @@ BubbleSorter::~BubbleSorter( void )
  */
 bool BubbleSorter::sort( int array_len, int* array )
 {
-	bool done = false;
+	bool done = true;
 
 	if (!array || 0 == array_len)
 	{
 		debug_log( "Array is empty nothing to sort\n" );
+		done = false;
 	}
 	else if (1 == array_len)
 	{
@@ -37,7 +38,6 @@ bool BubbleSorter::sort( int array_len, int* array )
 	else
 	{
 		bool made_change = false;
-		int tmp = 0;
 
 		/* Keep looping until there are no changes */
 		do
@@ -50,17 +50,20 @@ bool BubbleSorter::sort( int array_len, int* array )
 				/* Swap if out of order */
 				if (array[i-1] > array[i])
 				{
-					debug_log( "Swapping %d with %d\n", array[i-1], array[i] );
-					tmp = array[i-1];
-					array[i-1] = array[i];
-					array[i] = tmp;
-					made_change = true;
+					if (!swap_values( array + (i-1), array + i ))
+					{
+						error_log( "Critical error\n" );
+						done = false;
+						break;
+					}
+					else
+					{
+						made_change = true;
+					}
 				}
 				else { /* Correct order */ }
 			}
 		} while (made_change);
-
-		done = true;
 	}
 
 	return done;

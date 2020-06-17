@@ -5,6 +5,8 @@
 
 class SelectionSorter : public Sorter
 {
+private:
+	bool slowSort( int array_len, int* array );
 public:
 	SelectionSorter();
 	~SelectionSorter( void );

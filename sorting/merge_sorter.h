@@ -5,6 +5,8 @@
 
 class MergeSorter : public Sorter
 {
+private:
+	bool slowSort( int array_len, int* array );
 public:
 	MergeSorter();
 	~MergeSorter( void );

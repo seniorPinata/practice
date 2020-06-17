@@ -14,6 +14,7 @@
 class Sorter : public Loggable
 {
 protected:
+	bool swap_values( int* val1, int* val2 );
 	bool shift_right( int array_len, int* array, int start_idx, int end_idx );
 	void print_array( int array_len, int* array );
 private:
