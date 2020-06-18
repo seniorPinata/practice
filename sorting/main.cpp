@@ -2,6 +2,7 @@
 #include "selection_sorter.h"
 #include "insertion_sorter.h"
 #include "merge_sorter.h"
+#include "quick_sorter.h"
 
 int main(int argc, char const *argv[])
 {
@@ -20,5 +21,9 @@ int main(int argc, char const *argv[])
 	MergeSorter ms;
 	ms.set_log_level( LOG_LEVEL_INFO );
 	ms.unittest();
+
+	QuickSorter qs;
+	qs.set_log_level( LOG_LEVEL_INFO );
+	qs.unittest();
 	return 0;
 }

@@ -79,7 +79,7 @@ void Sorter::unittest( void )
 
 	/* Repititions */
 	len = 11;
-	int arr_reps[] = { 11, 10, 1, 8, 7, 6, 6, 4, 3, 2, 11 };
+	int arr_reps[] = { 11, 10, 1, 8, 7, 6, 11, 4, 3, 2, 6 };
 	int arr_reps_expected[] = { 1, 2, 3, 4, 6, 6, 7, 8, 10, 11, 11 };
 	assert( true == sort(len, arr_reps) );
 	assert( 0 == memcmp( arr_reps, arr_reps_expected, len ) );
