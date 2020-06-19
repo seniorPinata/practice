@@ -1,11 +1,30 @@
 CXX 		= g++
-CXXFLAGS	= -g -Wall
+INCLUDES	= -I./include
+CXXFLAGS	= -g -Wall $(INCLUDES)
 LDFLAGS 	=
-OBJS 		= main.o loggable.o sorter.o \
-			  bubble_sorter.o selection_sorter.o insertion_sorter.o \
-			  merge_sorter.o quick_sorter.o
-TARGET 		= sort_app
-DEPS 		=
+TARGET          = sort_app
+
+SRC_DIR		= src
+OBJ_DIR		= $(SRC_DIR)/objs
+FILES 		= main loggable sorter \
+			  bubble_sorter selection_sorter insertion_sorter \
+			  merge_sorter quick_sorter
+OBJS		= $(FILES:%=$(OBJ_DIR)/%.o)
+
+# By default Make thinks the TARGET parameter is a file.
+# It will only run the command if the TARGET is out of date.
+# If you happen to have a file named clean and it is up to date,
+#       Make will not run the command
+# Tell Make the "clean" TARGET is PHONY so it doesn't associate
+#       it with a file. It will always be run now.
+.PHONY: all make_dirs clean
+
+all: make_dirs $(TARGET)
+make_dirs:
+	mkdir -p $(OBJ_DIR)	
+clean:
+	rm $(OBJS) $(TARGET)
+	rmdir $(OBJ_DIR)
 
 # $@ -> target name
 # $< -> first dependency
@@ -15,5 +34,8 @@ DEPS 		=
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-clean:
-	rm $(OBJS) $(TARGET)
+# This rule is automatically invoked by the rule above for all
+# 	object files that match the TARGET section.
+# It compiles .cpp files into .o files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $^ $(LDFLAGS)

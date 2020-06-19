@@ -92,6 +92,9 @@ bool MergeSorter::sort( int array_len, int* array )
 			main_pos++;
 		}
 
+		delete array1;
+		delete array2;
+		
 		debug_log( "Merged array:\n" );
 		print_array( array_len, array );
 	}
