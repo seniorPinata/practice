@@ -6,7 +6,7 @@ TARGET 		= graph_app
 
 SRC_DIR		= src
 OBJ_DIR		= $(SRC_DIR)/objs
-FILES 		= main Graph ArrayGraph
+FILES 		= main Graph ArrayGraph HashGraph
 OBJS		= $(FILES:%=$(OBJ_DIR)/%.o)
 
 # By default Make thinks the TARGET parameter is a file.
